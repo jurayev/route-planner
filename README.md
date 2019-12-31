@@ -8,6 +8,7 @@ Udacity Intro to Self-Driving-Car Nanodegree Project
 * [Dataset](https://github.com/jurayev/intro-sdc-route-planner-py#dataset)
 * [Algorithm](https://github.com/jurayev/intro-sdc-route-planner-py#algorithm)
 * [PathPlanner class](https://github.com/jurayev/intro-sdc-route-planner-py#pathplanner-class)
+* [Tests](https://github.com/jurayev/intro-sdc-route-planner-py#tests)
 * [License](https://github.com/jurayev/intro-sdc-route-planner-py#license)
 
 ## Project Summary
@@ -42,7 +43,7 @@ The dataset for testing Path Planner implementation consists of 2 maps with diff
 
 The map below shows a disconnected network of 40 intersections. This map is quite literal in its expression of distance and connectivity. On the graph below, the edge between 2 nodes(intersections) represents a literal straight road not just an abstract connection of 2 cities.
 
-<img src="images/map_40.png" width="75%" height="75%">
+<img src="images/map_40.png" width="100%" height="100%">
 
 These Map objects have two properties needed to use to implement A* search: `intersections` and `roads`
 
@@ -86,7 +87,7 @@ The algorithm written will be responsible for generating a `path` array of nodes
 
 And here is a visual representation of found path:
 
-<img src="images/path_on_map.png" width="75%" height="75%">
+<img src="images/path_on_map.png" width="100%" height="100%">
 
 ## PathPlanner class
 Let me very briefly walk through each part below.
