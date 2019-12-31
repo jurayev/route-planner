@@ -150,7 +150,7 @@ class PathPlanner:
         return self.gScore[node]
 
     def distance(self, node_1, node_2):
-        """ Computes the Euclidean L2 Distance."""
+        """Computes the Euclidean L2 Distance."""
         n1 = self.map.intersections[node_1]
         n2 = self.map.intersections[node_2]
         return math.sqrt(math.pow(n1[0] - n2[0], 2) + math.pow(n1[1] - n2[1], 2))
