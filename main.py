@@ -1,34 +1,36 @@
-from src.route_planner import PathPlanner
+import unittest
 from tests import system_tests, unit_tests
+import logging
+import sys
+logging.basicConfig(stream=sys.stderr, level=logging.INFO)
+logger = logging.getLogger(" Test Log")
 
 
-def main():
-    unit_test = unit_tests.Tests()
-    print("---------RUNNING UNIT TESTS----------------")
-    unit_test.create_closedSet_test()
-    unit_test.create_openSet_test()
-    unit_test.create_cameFrom_test()
-    unit_test.create_gScore_test()
-    unit_test.create_fScore_test()
-    unit_test.set_map_test()
-    unit_test.set_start_test()
-    unit_test.set_goal_test()
-    unit_test.is_open_empty_test()
-    unit_test.get_current_node_test()
-    unit_test.get_neighbors_test()
-    unit_test.get_gScore_test()
-    unit_test.distance_test()
-    unit_test.get_tentative_gScore_test()
-    unit_test.heuristic_cost_estimate_test()
-    unit_test.calculate_fScore_test()
-    unit_test.record_best_path_to_test()
-    print("All Unit tests are passed!")
+def unit_suite():
+    logger.info("---------RUNNING UNIT TESTS--------------")
+    loader = unittest.TestLoader()
+    suite = loader.loadTestsFromTestCase(unit_tests.UnitTests)
+    return suite
 
-    system_test = system_tests.Tests()
-    print("---------RUNNING SYSTEM TESTS--------------")
-    system_test.test_initial()
-    system_test.test_full(PathPlanner)
+
+def smoke_suite():
+    logger.info("---------RUNNING SMOKE TESTS--------------")
+    Test = system_tests.SystemTests
+    suite = unittest.TestSuite()
+    suite.addTest(Test('test_plan_short_path'))
+    return suite
+
+
+def system_suite():
+    logger.info("---------RUNNING SYSTEM TESTS--------------")
+    loader = unittest.TestLoader()
+    suite = loader.loadTestsFromTestCase(system_tests.SystemTests)
+    return suite
 
 
 if __name__ == "__main__":
-    main()
+    runner = unittest.TextTestRunner(verbosity=2)
+    runner.run(unit_suite())
+    runner.run(smoke_suite())
+    runner.run(system_suite())
+
