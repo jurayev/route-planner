@@ -9,11 +9,11 @@ class PathPlanner:
         self.map = M
         self.start = start
         self.goal = goal
-        self.closedSet = self.create_closedSet() if goal != None and start != None else None
-        self.openSet = self.create_openSet() if goal != None and start != None else None
-        self.cameFrom = self.create_cameFrom() if goal != None and start != None else None
-        self.gScore = self.create_gScore() if goal != None and start != None else None
-        self.fScore = self.create_fScore() if goal != None and start != None else None
+        self.closedSet = self.create_closedSet() if self.goal != None and self.start != None else None
+        self.openSet = self.create_openSet() if self.goal != None and self.start != None else None
+        self.cameFrom = self.create_cameFrom() if self.goal != None and self.start != None else None
+        self.gScore = self.create_gScore() if self.map and self.goal != None and self.start != None else None
+        self.fScore = self.create_fScore() if self.map and self.goal != None and self.start != None else None
         self.path = self.run_search() if self.map and self.start != None and self.goal != None else None
 
     def reconstruct_path(self, current):
@@ -36,13 +36,11 @@ class PathPlanner:
     def run_search(self):
         """Searches for the best path available."""
         if self.map == None:
-            raise (ValueError, "Must create map before running search. Try running PathPlanner.set_map(start_node)")
-        if self.goal == None:
-            raise (
-            ValueError, "Must create goal node before running search. Try running PathPlanner.set_goal(start_node)")
-        if self.start == None:
-            raise (
-            ValueError, "Must create start node before running search. Try running PathPlanner.set_start(start_node)")
+            raise ValueError("Must create map before running search. Try running PathPlanner.set_map(start_node)")
+        if self.goal == None or self.goal not in self.map.intersections:
+            raise ValueError("Must create goal node before running search. Try running PathPlanner.set_goal(start_node)")
+        if self.start == None or self.start not in self.map.intersections:
+            raise ValueError("Must create start node before running search. Try running PathPlanner.set_start(start_node)")
 
         self.closedSet = self.closedSet if self.closedSet != None else self.create_closedSet()
         self.openSet = self.openSet if self.openSet != None else self.create_openSet()
@@ -86,7 +84,7 @@ class PathPlanner:
         that are not evaluated yet. Initially, only the start node is known."""
         if self.start != None:
             return {self.start}
-        raise (ValueError, "Must create start node before creating an open set. Try running PathPlanner.set_start(start_node)")
+        raise ValueError("Must create start node before creating an open set. Try running PathPlanner.set_start(start_node)")
 
     def create_cameFrom(self):
         """Creates and returns a data structure that shows which node can most efficiently be reached from another,
