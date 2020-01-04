@@ -111,15 +111,56 @@ From here, we use a function `is_open_empty`, to check that there are still node
 This is the main idea behind A*.
 
 ## Tests
-Beside visual evaluation of the constructed path, I created unit tests that checks every component of the PathPlanner class and system tests that are responsible for verifying the found path.
-Here is the output after running all tests:
+Since my background comes from QA and Testing, I understand that testing your code is equally important as writing this code.
+Beside visual evaluation of the constructed path, I created unit tests that checks every single component of the PathPlanner class and system tests that are responsible for verifying the found path.
+Here is the output of `main.py` after running all tests:
 ```
----------RUNNING UNIT TESTS----------------
-All Unit tests are passed!
----------RUNNING SYSTEM TESTS--------------
-Great! Your code works for these inputs!
-[5, 16, 37, 12, 34]
-All system tests are passed! Congratulations!
+INFO: Test Log:---------RUNNING UNIT TESTS--------------
+test_calculate_fScore (tests.unit_tests.UnitTests) ... ok
+test_create_cameFrom (tests.unit_tests.UnitTests) ... ok
+test_create_closedSet (tests.unit_tests.UnitTests) ... ok
+test_create_fScore (tests.unit_tests.UnitTests) ... ok
+test_create_gScore (tests.unit_tests.UnitTests) ... ok
+test_create_openSet (tests.unit_tests.UnitTests) ... ok
+test_distance (tests.unit_tests.UnitTests) ... ok
+test_get_current_node (tests.unit_tests.UnitTests) ... ok
+test_get_gScore (tests.unit_tests.UnitTests) ... ok
+test_get_neighbors (tests.unit_tests.UnitTests) ... ok
+test_get_tentative_gScore (tests.unit_tests.UnitTests) ... ok
+test_heuristic_cost_estimate (tests.unit_tests.UnitTests) ... ok
+test_is_open_empty (tests.unit_tests.UnitTests) ... ok
+test_record_best_path (tests.unit_tests.UnitTests) ... ok
+test_set_goal (tests.unit_tests.UnitTests) ... ok
+test_set_map (tests.unit_tests.UnitTests) ... ok
+test_set_start (tests.unit_tests.UnitTests) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.012s
+
+OK
+INFO: Test Log:---------RUNNING SMOKE TESTS--------------
+test_plan_short_path (tests.system_tests.SystemTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+INFO: Test Log:---------RUNNING SYSTEM TESTS--------------
+test_plan_longest_path (tests.system_tests.SystemTests) ... ok
+test_plan_path_invalid_goal (tests.system_tests.SystemTests) ... ok
+test_plan_path_invalid_map (tests.system_tests.SystemTests) ... ok
+test_plan_path_invalid_start (tests.system_tests.SystemTests) ... ok
+test_plan_path_missing_goal (tests.system_tests.SystemTests) ... ok
+test_plan_path_missing_map (tests.system_tests.SystemTests) ... ok
+test_plan_path_missing_start (tests.system_tests.SystemTests) ... ok
+test_plan_same_node_path (tests.system_tests.SystemTests) ... ok
+test_plan_short_path (tests.system_tests.SystemTests) ... ok
+test_plan_two_nodes_path (tests.system_tests.SystemTests) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.002s
+
+OK
 ```
 
 ## License
