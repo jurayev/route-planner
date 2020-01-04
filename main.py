@@ -33,4 +33,3 @@ if __name__ == "__main__":
     runner.run(unit_suite())
     runner.run(smoke_suite())
     runner.run(system_suite())
-
