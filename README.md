@@ -12,10 +12,10 @@ Udacity Intro to Self-Driving-Car Nanodegree Project
 * [License](https://github.com/jurayev/intro-sdc-route-planner-py#license)
 
 ## Project Summary
-Implementation of a Google-maps style route planning algorithm using A-star search. Algorithm calculates the shortest path between two points on a map.
+Implementation of a Google-maps style route planning algorithm using A-star search. The Algorithm calculates the shortest path between two points on a map.
 
-Approach: In this project I selected A-Star search algorithm because it combines both Uniform cost search(keeps the path short) and Best First search(keeps focused on the goal) in order to implement Best estimated total path first(always expands towards shortest path to the goal) algorithm.
-A-Star search guarantees to find the sortest path from point A to point B.
+Approach: In this project, I selected the A-Star search algorithm because it combines both Uniform cost search(keeps the path short) and Best First search(keeps focused on the goal) to implement Best estimated total path first(always expands towards the shortest path to the goal) algorithm.
+A-Star search guarantees to find the shortest path from point A to point B.
 
 ## Dependencies
 * Python 3.5 or higher.
@@ -76,7 +76,7 @@ For example:
 This shows that intersection 0 connects to intersections 36, 34, 31, 28 and 17 on the map
 
 ## Algorithm
-The algorithm written will be responsible for generating a `path` array of nodes. In fact, when called with the same map, start and goal, as above algorithm should produce the path `[5, 16, 37, 12, 34]`.
+The algorithm is written will be responsible for generating a `path` array of nodes. In fact, when called with the same map, start and goal, as the above algorithm should produce the path `[5, 16, 37, 12, 34]`.
 
 ```
 > start = 8
@@ -92,19 +92,19 @@ And here is a visual representation of found path:
 ## PathPlanner class
 Let me very briefly walk through each part below.
 
-`__init__` - We initialize our path planner with a map, M, and typically a start and goal node. If either of these are `None`, the rest of the variables here are also set to none. If we don't have both a start and a goal, there's no path to plan! The rest of these variables come from functions below: 
+`__init__` - We initialize our path planner with a map, M, and typically a start and goal node. If either of these is `None`, the rest of the variables here are also set to none. If we don't have both a start and a goal, there's no path to plan! The rest of these variables come from functions below: 
 - `closedSet` includes any explored/visited nodes. 
 - `openSet` are any nodes on our frontier for potential future exploration. 
 - `cameFrom` will hold the previous node that best reaches a given node
-- `gScore` is the `g` in our `f = g + h` equation, or the actual cost to reach our current node
+- `gScore` is the `g` in our `f = g + h` equation or the actual cost to reach our current node
 - `fScore` is the combination of `g` and `h`, i.e. the `gScore` plus a heuristic; total cost to reach the goal
 - `path` comes from the `run_search` function, which is already built for you.
 
-`reconstruct_path` - This function just rebuilds the path after search is run, going from the goal node backwards using each node's `cameFrom` information.
+`reconstruct_path` - This function just rebuilds the path after the search is run, going from the goal node backward using each node's `cameFrom` information.
 
 `_reset` - Resets *most* of our initialized variables for PathPlanner. This *does not* reset the map, start or goal variables.
 
-`run_search` - This does a lot of the legwork to run search. First, it checks whether the map, goal and start have been added to the class. Then, it will also check if the other variables, other than `path` are initialized (note that these are only needed to be re-run if the goal or start were not originally given when initializing the class, based on what we discussed above for `__init__`.
+`run_search` - This does a lot of the legwork to run the search. First, it checks whether the map, goal, and start have been added to the class. Then, it will also check if the other variables, other than `path` are initialized (note that these are only needed to be re-run if the goal or start were not originally given when initializing the class, based on what we discussed above for `__init__`.
 
 From here, we use a function `is_open_empty`, to check that there are still nodes to explore (we need to make sure to feed `openSet` the start node to make sure the algorithm doesn't immediately think there is nothing to open!). If we're at our goal, we reconstruct the path. If not, we move our current node from the frontier (`openSet`) and into explored (`closedSet`). Then, we check out the neighbors of the current node, check out their costs, and plan our next move.
 
@@ -112,7 +112,7 @@ This is the main idea behind A*.
 
 ## Tests
 Since my background comes from QA and Testing, I understand that testing your code is equally important as writing this code.
-Beside visual evaluation of the constructed path, I created unit tests that checks every single component of the PathPlanner class and system tests that are responsible for verifying the found path.
+Besides the visual evaluation of the constructed path, I created unit tests that check every single component of the PathPlanner class and system tests that are responsible for verifying the found path.
 Here is the output of `main.py` after running all tests:
 ```
 INFO: Test Log:---------RUNNING UNIT TESTS--------------
