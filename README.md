@@ -31,7 +31,11 @@ $ git clone https://github.com/jurayev/intro-sdc-route-planner-py
 ```
 $ cd intro-sdc-route-planner-py
 ```
-3. Run Route Planner tests
+3. Install dependencies
+```
+$ pip3 install networkx
+```
+4. Run Route Planner tests
 ```
 $ python3 main.py
 ```
