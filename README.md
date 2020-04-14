@@ -18,9 +18,10 @@ Approach: In this project, I selected the A-Star search algorithm because it com
 A-Star search guarantees to find the shortest path from point A to point B.
 
 ## Dependencies
-* Python 3.5 or higher.
-* NetworkX - Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
-* pickle - used to create portable serialized representations of Python objects.
+* `Python 3.5` or higher.
+* `NetworkX` - Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
+* `pickle` - used to create portable serialized representations of Python objects.
+* `pytest` - covers the code with unit tests
 
 ## Getting Started
 1. Clone repository
@@ -33,11 +34,20 @@ $ cd intro-sdc-route-planner-py
 ```
 3. Install dependencies
 ```
-$ pip3 install networkx
+python3 setup.py install
 ```
 4. Run Route Planner tests
 ```
-$ python3 main.py
+$ python3 -m pytest --html=test/latest_reports/report.html
+```
+5. Run Route Planner tests with filters
+```
+$ python3 -m pytest -m unit --html=test/latest_reports/units_report.html
+$ python3 -m pytest -m system --html=test/latest_reports/system_report.html
+```
+6. Reports are available here:
+```
+~ intro-sdc-route-planner-py/test/latest_reports/
 ```
 
 ## Dataset
@@ -151,12 +161,12 @@ Ran 1 test in 0.000s
 OK
 INFO: Test Log:---------RUNNING SYSTEM TESTS--------------
 test_plan_longest_path (tests.system_tests.SystemTests) ... ok
-test_plan_path_invalid_goal (tests.system_tests.SystemTests) ... ok
-test_plan_path_invalid_map (tests.system_tests.SystemTests) ... ok
-test_plan_path_invalid_start (tests.system_tests.SystemTests) ... ok
-test_plan_path_missing_goal (tests.system_tests.SystemTests) ... ok
-test_plan_path_missing_map (tests.system_tests.SystemTests) ... ok
-test_plan_path_missing_start (tests.system_tests.SystemTests) ... ok
+test_plan_path_with_invalid_goal (tests.system_tests.SystemTests) ... ok
+test_plan_path_with_invalid_map (tests.system_tests.SystemTests) ... ok
+test_plan_path_with_invalid_start (tests.system_tests.SystemTests) ... ok
+test_plan_path_with_missing_goal (tests.system_tests.SystemTests) ... ok
+test_plan_path_with_missing_map (tests.system_tests.SystemTests) ... ok
+test_plan_path_with_missing_start (tests.system_tests.SystemTests) ... ok
 test_plan_same_node_path (tests.system_tests.SystemTests) ... ok
 test_plan_short_path (tests.system_tests.SystemTests) ... ok
 test_plan_two_nodes_path (tests.system_tests.SystemTests) ... ok

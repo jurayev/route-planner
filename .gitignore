@@ -1,4 +1,11 @@
 # ignore the following
-__pycache__/
-.idea/*
-*.log
+.pytest_cache
+build
+dist
+assets
+route_planner_env
+route_planner.egg-info
+*/__pycache__
+.idea
+*.iml
+*.html
