@@ -3,6 +3,7 @@
 build
 dist
 assets
+htmlcov
 .*reports
 route_planner_env
 route_planner.egg-info
@@ -11,3 +12,4 @@ route_planner.egg-info
 *.iml
 *.html
 *.css
+*.coverage
