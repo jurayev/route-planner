@@ -72,8 +72,7 @@ class PathPlanner:
                 # This path is the best until now. Record it!
                 self.record_best_path_to(current, neighbor)
         print("No Path Found")
-        self.path = None
-        return False
+        return None
 
     def create_closedSet(self):
         """Creates and returns a data structure suitable to hold the set of nodes already evaluated."""
