@@ -21,7 +21,8 @@ A-Star search guarantees to find the shortest path from point A to point B.
 * `Python 3.5` or higher.
 * `NetworkX` - Python package for the creation, manipulation, and study of the structure, dynamics, and functions of complex networks.
 * `pickle` - used to create portable serialized representations of Python objects.
-* `pytest` - covers the code with unit tests
+* `PyTest` - covers the code with unit tests
+* `Coverage.py`- code coverage evaluation tool
 
 ## Getting Started
 1. Clone repository
@@ -45,9 +46,18 @@ $ python3 -m pytest --html=test/latest_reports/report.html
 $ python3 -m pytest -m unit --html=test/latest_reports/units_report.html
 $ python3 -m pytest -m system --html=test/latest_reports/system_report.html
 ```
-6. Reports are available here:
+Reports are available here:
 ```
 ~ intro-sdc-route-planner-py/test/latest_reports/
+```
+6. Run with code coverage evaluation
+```
+$ coverage run --source=src/ -m pytest 
+$ coverage html
+```
+Report is available here:
+```
+~ intro-sdc-route-planner-py/htmlcov/index.html
 ```
 
 ## Dataset
@@ -132,6 +142,9 @@ Here is the test result report after running all tests using `PyTest` Framework 
 
 <img src="images/pytest_report.png" width="100%" height="100%">
 
+The production code has 100% code coverage metrics measured by `Coverage.py` tool. The coverage report is shown below:
+
+<img src="images/coverage_report.png" width="100%" height="80%">
 
 ## License
 The content of this repository is licensed under a [MIT License](https://github.com/jurayev/intro-sdc-route-planner-py/blob/master/LICENSE.md).
