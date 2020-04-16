@@ -64,10 +64,6 @@ class Map:
         self.intersections = nx.get_node_attributes(G, "pos")
         self.roads = [list(G[node]) for node in G.nodes()]
 
-    def save(self, filename):
-        with open(filename, 'wb') as f:
-            pickle.dump(self._graph, f)
-
 
 def load_map_graph(map_dict):
     G = nx.Graph()
