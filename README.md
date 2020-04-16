@@ -127,55 +127,11 @@ This is the main idea behind A*.
 ## Tests
 Since my background comes from QA and Testing, I understand that testing your code is equally important as writing this code.
 Besides the visual evaluation of the constructed path, I created unit tests that check every single component of the PathPlanner class and system tests that are responsible for verifying the found path.
-Here is the output of `main.py` after running all tests:
-```
-INFO: Test Log:---------RUNNING UNIT TESTS--------------
-test_calculate_fScore (tests.unit_tests.UnitTests) ... ok
-test_create_cameFrom (tests.unit_tests.UnitTests) ... ok
-test_create_closedSet (tests.unit_tests.UnitTests) ... ok
-test_create_fScore (tests.unit_tests.UnitTests) ... ok
-test_create_gScore (tests.unit_tests.UnitTests) ... ok
-test_create_openSet (tests.unit_tests.UnitTests) ... ok
-test_distance (tests.unit_tests.UnitTests) ... ok
-test_get_current_node (tests.unit_tests.UnitTests) ... ok
-test_get_gScore (tests.unit_tests.UnitTests) ... ok
-test_get_neighbors (tests.unit_tests.UnitTests) ... ok
-test_get_tentative_gScore (tests.unit_tests.UnitTests) ... ok
-test_heuristic_cost_estimate (tests.unit_tests.UnitTests) ... ok
-test_is_open_empty (tests.unit_tests.UnitTests) ... ok
-test_record_best_path (tests.unit_tests.UnitTests) ... ok
-test_set_goal (tests.unit_tests.UnitTests) ... ok
-test_set_map (tests.unit_tests.UnitTests) ... ok
-test_set_start (tests.unit_tests.UnitTests) ... ok
 
-----------------------------------------------------------------------
-Ran 17 tests in 0.012s
+Here is the test result report after running all tests using `PyTest` Framework runner:
 
-OK
-INFO: Test Log:---------RUNNING SMOKE TESTS--------------
-test_plan_short_path (tests.system_tests.SystemTests) ... ok
+<img src="images/pytest_report.png" width="100%" height="100%">
 
-----------------------------------------------------------------------
-Ran 1 test in 0.000s
-
-OK
-INFO: Test Log:---------RUNNING SYSTEM TESTS--------------
-test_plan_longest_path (tests.system_tests.SystemTests) ... ok
-test_plan_path_with_invalid_goal (tests.system_tests.SystemTests) ... ok
-test_plan_path_with_invalid_map (tests.system_tests.SystemTests) ... ok
-test_plan_path_with_invalid_start (tests.system_tests.SystemTests) ... ok
-test_plan_path_with_missing_goal (tests.system_tests.SystemTests) ... ok
-test_plan_path_with_missing_map (tests.system_tests.SystemTests) ... ok
-test_plan_path_with_missing_start (tests.system_tests.SystemTests) ... ok
-test_plan_same_node_path (tests.system_tests.SystemTests) ... ok
-test_plan_short_path (tests.system_tests.SystemTests) ... ok
-test_plan_two_nodes_path (tests.system_tests.SystemTests) ... ok
-
-----------------------------------------------------------------------
-Ran 10 tests in 0.002s
-
-OK
-```
 
 ## License
 The content of this repository is licensed under a [MIT License](https://github.com/jurayev/intro-sdc-route-planner-py/blob/master/LICENSE.md).
