@@ -1,4 +1,5 @@
 """Tests for route planner full functionality"""
+from src.helpers import load_map_10
 from src.route_planner import PathPlanner
 import pytest
 
@@ -22,7 +23,14 @@ def test_plan_path(map_40, start, goal, expected_path):
                           (None, 34)
                          ])
 def test_plan_path_with_missing_start_or_goal(map_40, start, goal):
-    planner = PathPlanner(map_40, start=start, goal=goal)
+    planner = PathPlanner(map_40, start, goal)
+    assert planner.path is None
+
+
+@pytest.mark.system
+def test_plan_path_with_disconnected_nodes():
+    map_10 = load_map_10()
+    planner = PathPlanner(map_10, start=1, goal=9)
     assert planner.path is None
 
 

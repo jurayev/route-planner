@@ -20,6 +20,13 @@ def test_create_open_set_with_start_node(map_40):
 
 
 @pytest.mark.unit
+def test_create_open_set_raises_value_error(map_40):
+    planner = PathPlanner(map_40, None, 34)
+    with pytest.raises(ValueError):
+        planner.create_openSet()
+
+
+@pytest.mark.unit
 def test_create_empty_came_from(map_40):
     planner = PathPlanner(map_40, 5, 34)
     came_from = planner.create_cameFrom()
@@ -173,21 +180,28 @@ def test_record_best_path(map_40):
 
 
 @pytest.mark.unit
-def test_plan_path_with_invalid_goal(map_40):
+def test_plan_path_with_invalid_goal_raises_value_error(map_40):
     invalid_goal = -1
     with pytest.raises(ValueError, match=r".*goal node.*"):
         PathPlanner(map_40, start=21, goal=invalid_goal)
 
 
 @pytest.mark.unit
-def test_plan_path_with_invalid_start(map_40):
+def test_plan_path_with_invalid_start_raises_value_error(map_40):
     invalid_start = 40
     with pytest.raises(ValueError, match=r".*start node.*"):
         PathPlanner(map_40, start=invalid_start, goal=21)
 
 
 @pytest.mark.unit
-def test_plan_path_with_missing_goal_on_map_10():
+def test_plan_path_with_missing_goal_on_map_10_raises_value_error():
     map_10 = load_map_10()
     with pytest.raises(ValueError, match=r".*goal node.*"):
         PathPlanner(map_10, start=10, goal=20)
+
+
+@pytest.mark.unit
+def test_run_search_with_missing_map_raises_value_error():
+    planner = PathPlanner(M=None, start=15, goal=16)
+    with pytest.raises(ValueError, match=r".*create map.*"):
+        planner.run_search()
