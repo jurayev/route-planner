@@ -2,8 +2,12 @@
 .pytest_cache
 build
 dist
+assets
+.*reports
 route_planner_env
 route_planner.egg-info
 */__pycache__
 .idea
 *.iml
+*.html
+*.css
