@@ -1,5 +1,5 @@
 # Route Planner
-Route planning alogorithm that finds the best path beetween two points on a map.
+Route planning alogorithm that finds the best path between two points on a map.
 
 ## Table of Contents
 * [Project Summary](https://github.com/jurayev/intro-sdc-route-planner-py#project-summary)
